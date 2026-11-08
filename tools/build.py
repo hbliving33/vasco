@@ -136,7 +136,7 @@ home = f"""
 <div class="stats"><div class="wrap">
   <div class="stat"><b>40+</b><span>Years in business</span></div>
   <div class="stat"><b>Thousands</b><span>Of systems installed</span></div>
-  <div class="stat"><b>Top 500</b><span>Solar Power World, 2016–2020 &amp; 2024</span></div>
+  <div class="stat"><b>Top 500</b><span>Solar Power World, 2016–2020, 2024 &amp; 2026</span></div>
   <div class="stat"><b>$0 Down</b><span>Financing available</span></div>
 </div></div>
 
@@ -165,7 +165,7 @@ home = f"""
 
 <section class="alt"><div class="wrap">
   <div class="head center"><span class="eyebrow">Awards &amp; affiliations</span><h2>Recognized by the industry</h2></div>
-  <div class="awards"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"></div>
+  <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"></div>
   <div style="height:56px"></div>
   <div class="head center" style="margin-bottom:28px"><h3>The brands we install</h3></div>
   {logo_strip}
@@ -398,12 +398,12 @@ about = hero("About Vasco Solar","A full-service Orange County solar company wit
  <div><span class="eyebrow">Who we are</span><h2>Renewable energy, done right since the beginning</h2>
  <p>Vasco Solar is a full-service solar company serving homeowners and businesses throughout Southern California, primarily Orange County, with a focus on saving energy and reducing utility costs.</p>
  <p>We design every type of solar application: solar electricity, solar pool heating, solar hot water and battery storage, each optimally designed for your unique situation.  Innovative technology, top-of-the-line equipment, skilled technicians and our commitment to customers have kept us going strong, and word of mouth remains our main source of new business.</p>
- <ul class="checks"><li>Technical expert for the California Contractors State License Board</li><li>Aquatherm Industries Gold Medal Installer</li><li>Solar Power World Top 500 Solar Contractor in North America, 2016–2020 and 2024</li><li>Proud member of CALSSA, the California Solar &amp; Storage Association</li><li>Licensed California contractor, {LIC}</li></ul></div>
+ <ul class="checks"><li>Technical expert for the California Contractors State License Board</li><li>Aquatherm Industries Gold Medal Installer</li><li>Solar Power World Top Solar Contractor, 2016–2020, 2024 and 2026</li><li>Proud member of CALSSA, the California Solar &amp; Storage Association</li><li>Licensed California contractor, {LIC}</li></ul></div>
  <img src="assets/img/pool-aquatherm.jpg" alt="Rick Vasquez of Vasco Solar with Aquatherm CEO Dave Sizelove at the Aquatherm plant, 2014" loading="lazy">
 </div></section>
 
 <section class="alt"><div class="wrap">
- <div class="awards"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"><img src="assets/img/cert-franklinwh.png" alt="FranklinWH Certified Installer"><img src="assets/img/cert-solaredge.png" alt="SolarEdge Certified Installer"><img src="assets/img/cert-enphase.jpg" alt="Enphase Certified Installer"></div>
+ <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"><img src="assets/img/cert-franklinwh.png" alt="FranklinWH Certified Installer"><img src="assets/img/cert-solaredge.png" alt="SolarEdge Certified Installer"><img src="assets/img/cert-enphase.jpg" alt="Enphase Certified Installer"></div>
 </div></section>
 
 <section id="partners"><div class="wrap">
