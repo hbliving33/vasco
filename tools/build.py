@@ -49,7 +49,7 @@ def page(fname, title, desc, body):
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<div class="topbar"><div class="wrap"><span>Serving Orange County &amp; Los Angeles County for 40+ years &nbsp;·&nbsp; {LIC}</span><span>Call for a free estimate: <a href="{TEL}">{PHONE}</a></span></div></div>
+<div class="topbar"><div class="wrap"><span>Serving Orange County &amp; Los Angeles County since 1989 &nbsp;·&nbsp; {LIC}</span><span>Call for a free estimate: <a href="{TEL}">{PHONE}</a></span></div></div>
 <header class="site"><div class="wrap">
   <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Vasco Solar"></a>
   <button class="menu-btn" aria-label="Menu">&#9776;</button>
@@ -128,13 +128,13 @@ logo_strip = '<div class="logos">' + "".join(f'<div><img src="assets/img/{l}" al
 
 home = f"""
 <section class="hero" style="background-image:url(assets/img/hero.jpg)"><div class="wrap">
-  <span class="eyebrow">Solar power solutions for over 40 years</span>
+  <span class="eyebrow">Solar power solutions since 1989</span>
   <h1>Dependable, affordable, <em>best-in-class solar.</em></h1>
-  <p>For more than 40 years, Vasco Solar has designed and installed custom solar systems for Southern California homeowners and businesses, with $0-down financing and monitoring from your phone.</p>
+  <p>Since 1989, Vasco Solar has designed and installed custom solar systems for Southern California homeowners and businesses, with $0-down financing and monitoring from your phone.</p>
   <div class="actions"><a class="btn btn-sun" href="contact.html">Schedule Your Free Estimate</a><a class="btn btn-ghost" href="{TEL}">Call {PHONE}</a></div>
 </div></section>
 <div class="stats"><div class="wrap">
-  <div class="stat"><b>40+</b><span>Years in business</span></div>
+  <div class="stat"><b>1989–2026</b><span>Years in business</span></div>
   <div class="stat"><b>Thousands</b><span>Of systems installed</span></div>
   <div class="stat"><b>Top 500</b><span>Solar Power World, 2016–2020, 2024 &amp; 2026</span></div>
   <div class="stat"><b>$0 Down</b><span>Financing available</span></div>
@@ -149,7 +149,7 @@ home = f"""
 <section class="alt"><div class="wrap split">
   <img src="assets/img/pv-04.jpg" alt="Rooftop solar electric system in Huntington Beach installed by Vasco Solar" loading="lazy">
   <div><span class="eyebrow">Why Vasco Solar</span><h2>Built on word of mouth, not advertising</h2>
-  <p>Customer satisfaction and referrals have kept Vasco Solar growing for four decades.  We pair top-of-the-line panels and equipment with experienced technicians and a system designed for your unique situation.</p>
+  <p>Customer satisfaction and referrals have kept Vasco Solar growing since 1989.  We pair top-of-the-line panels and equipment with experienced technicians and a system designed for your unique situation.</p>
   <ul class="checks">
     <li><b>Custom-designed systems</b>: sized to your roof, your usage and your budget</li>
     <li><b>$0 down financing</b>: credit union loans from 7 to 20 years, no prepayment penalty</li>
@@ -165,14 +165,14 @@ home = f"""
 
 <section class="alt"><div class="wrap">
   <div class="head center"><span class="eyebrow">Awards &amp; affiliations</span><h2>Recognized by the industry</h2></div>
-  <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"></div>
+  <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"></div>
   <div style="height:56px"></div>
   <div class="head center" style="margin-bottom:28px"><h3>The brands we install</h3></div>
   {logo_strip}
 </div></section>
 """
 page("index.html","Vasco Solar | Solar Electricity, Pool Heating & Hot Water in Orange County",
-     "Vasco Solar designs and installs solar electricity, solar pool heating, solar hot water and battery systems in Orange County and Los Angeles County.  40+ years.  Free estimates.", home)
+     "Vasco Solar designs and installs solar electricity, solar pool heating, solar hot water and battery systems in Orange County and Los Angeles County since 1989.  Free estimates.", home)
 
 # ---------------------------------------------------------------- SERVICES
 svc_nav = '<nav class="subnav"><div class="wrap">' + "".join(f'<a href="#{a}">{t}</a>' for _,t,_,a in SERVICES) + '</div></nav>'
@@ -393,7 +393,7 @@ partners = [
 ]
 pcards = "".join(f'<div class="card partner"><div class="lg"><img src="assets/img/{img}" alt="{n}" loading="lazy"></div><div><span class="eyebrow" style="margin-bottom:.2em">{cat}</span><h3 style="margin-bottom:.2em">{n}</h3><p>{d}</p></div></div>' for cat,img,n,d in partners)
 
-about = hero("About Vasco Solar","A full-service Orange County solar company with more than 40 years of experience.","pool-aquatherm.jpg") + f"""
+about = hero("About Vasco Solar","A full-service Orange County solar company serving Southern California since 1989.","pool-aquatherm.jpg") + f"""
 <section><div class="wrap split">
  <div><span class="eyebrow">Who we are</span><h2>Renewable energy, done right since the beginning</h2>
  <p>Vasco Solar is a full-service solar company serving homeowners and businesses throughout Southern California, primarily Orange County, with a focus on saving energy and reducing utility costs.</p>
@@ -403,7 +403,7 @@ about = hero("About Vasco Solar","A full-service Orange County solar company wit
 </div></section>
 
 <section class="alt"><div class="wrap">
- <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/award-top-contractor-2024.jpg" alt="Solar Power World Top Solar Contractor 2024"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"><img src="assets/img/cert-franklinwh.png" alt="FranklinWH Certified Installer"><img src="assets/img/cert-solaredge.png" alt="SolarEdge Certified Installer"><img src="assets/img/cert-enphase.jpg" alt="Enphase Certified Installer"></div>
+ <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"><img src="assets/img/cert-franklinwh.png" alt="FranklinWH Certified Installer"><img src="assets/img/cert-solaredge.png" alt="SolarEdge Certified Installer"><img src="assets/img/cert-enphase.jpg" alt="Enphase Certified Installer"></div>
 </div></section>
 
 <section id="partners"><div class="wrap">
@@ -416,7 +416,7 @@ about = hero("About Vasco Solar","A full-service Orange County solar company wit
  <div class="grid g3">{review_cards(REVIEWS)}</div>
 </div></section>
 """
-page("about.html","About Us | Vasco Solar","Vasco Solar is a full-service Orange County solar company with 40+ years of experience, Top 500 Solar Contractor honors and CALSSA membership.", about)
+page("about.html","About Us | Vasco Solar","Vasco Solar is a full-service Orange County solar company serving Southern California since 1989, Top 500 Solar Contractor honors and CALSSA membership.", about)
 
 # ---------------------------------------------------------------- CONTACT
 chips = "".join(f'<label><input type="checkbox" name="interest" value="{v}"> {v}</label>' for v in ["Solar Electricity","Pool Heating","Hot Water","Batteries","Re-Roofing","Repair / Service"])
@@ -436,7 +436,7 @@ contact = hero("Get Your Free Estimate","Tell us a little about your project and
   </form>
   <div class="form-msg" style="margin-top:16px"></div>
  </div>
- <div><h2>Contact us</h2><p class="lede">A leader in innovative solar solutions for more than 40 years.  Start saving today.</p>
+ <div><h2>Contact us</h2><p class="lede">A leader in innovative solar solutions since 1989.  Start saving today.</p>
   <ul class="info-list">
    <li>{ICON['phone']}<div><b>Phone</b><br><a href="{TEL}">{PHONE}</a></div></li>
    <li>{ICON['pin']}<div><b>Office</b><br>{ADDR}</div></li>
