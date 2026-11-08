@@ -124,7 +124,7 @@ def review_cards(items):
 
 LOGOS = ["logo-enphase.png","logo-solaredge.jpg","logo-sma.png","logo-aquatherm.png","logo-si.png","logo-sunearth.png",
          "logo-pentair.jpg","logo-unirac.png","logo-quickmount.png","logo-grundfos.png","cert-franklinwh.png","logo-se-battery.png"]
-logo_strip = '<div class="logos">' + "".join(f'<div><img src="assets/img/{l}" alt="" loading="lazy"></div>' for l in LOGOS) + '</div>'
+logo_strip = '<div class="logos">' + "".join(f'<div><img src="assets/img/{l}" alt=""></div>' for l in LOGOS) + '</div>'
 
 home = f"""
 <section class="hero" style="background-image:url(assets/img/hero.jpg)"><div class="wrap">

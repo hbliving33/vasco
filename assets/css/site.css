@@ -198,3 +198,14 @@ footer.site .logo-bw{height:46px;width:auto;margin-bottom:16px}
 footer.site .legal{border-top:1px solid #1d3550;margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
 @media (max-width:860px){footer.site .cols{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){footer.site .cols{grid-template-columns:1fr}}
+
+/* small screens */
+@media (max-width:640px){
+  .topbar .wrap>span:first-child{display:none}
+  .topbar .wrap{justify-content:center}
+  .hero{min-height:0}
+  .hero .actions .btn,.cta .actions .btn{width:100%}
+  .stat b{font-size:1.45rem}
+  .stat span{font-size:.82rem}
+  section{padding:64px 0}
+}
