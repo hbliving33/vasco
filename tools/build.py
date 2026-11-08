@@ -143,7 +143,7 @@ home = f"""
 <section><div class="wrap">
   <div class="head center"><span class="eyebrow">What we do</span><h2>Every kind of solar, under one roof</h2>
   <p class="lede">Solar electricity, solar pool heating, solar hot water and battery storage, each one designed around your property, your usage and your goals.</p></div>
-  <div class="grid g3">{''.join(card(i,t,d) for i,t,d,_ in SERVICES)}</div>
+  <div class="grid g3">{''.join(card(i,t,d) for i,t,d,a in SERVICES if a not in ('evaluations','commercial','title-24'))}</div>
 </div></section>
 
 <section class="alt"><div class="wrap split">
