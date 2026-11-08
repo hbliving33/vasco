@@ -51,7 +51,7 @@ def page(fname, title, desc, body):
 <body>
 <div class="topbar"><div class="wrap"><span>Serving Orange County &amp; Los Angeles County since 1989 &nbsp;·&nbsp; {LIC}</span><span>Call for a free estimate: <a href="{TEL}">{PHONE}</a></span></div></div>
 <header class="site"><div class="wrap">
-  <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Vasco Solar"></a>
+  <a class="brand" href="index.html"><img src="assets/img/vasco-logo-reverse.svg" alt="Vasco Solar Energy"></a>
   <button class="menu-btn" aria-label="Menu">&#9776;</button>
   <nav class="main">{nav}<a class="btn btn-sun" href="contact.html">Free Estimate</a></nav>
 </div></header>
@@ -64,7 +64,7 @@ def page(fname, title, desc, body):
 </div></section>
 <footer class="site"><div class="wrap">
   <div class="cols">
-    <div><img class="logo-bw" src="assets/img/logo-bw.png" alt="Vasco Solar">
+    <div><img class="logo-bw" src="assets/img/vasco-logo-reverse.svg" alt="Vasco Solar Energy">
       <p>Full-service solar for homes and businesses in Southern California: solar electricity, pool heating, hot water and battery storage.</p>
       <p>{LIC}</p></div>
     <div><h4>Services</h4><ul>
@@ -277,7 +277,7 @@ go = hero("Go Solar","Why solar still pays in California, and the ways to pay fo
 <section class="alt" id="incentives"><div class="wrap split">
  <div><span class="eyebrow">Rebates &amp; incentives</span><h2>The federal credit has ended.  Solar still pays.</h2>
  <p>The 30% federal Residential Clean Energy Credit for residential systems expired on December 31, 2025.  Without it, payback takes a few years longer, but total lifetime savings remain substantial for most homes with good solar potential.</p>
- <p>Most homeowners still come out ahead: net-positive savings, higher home value, and more control over their energy.</p></div>
+ <p>Most homeowners still come out ahead: net-positive savings, higher home value, and more control over their energy.</p><div class="note"><b>Deadline: January 1, 2027.</b>  Solar finished before then stays excluded from property tax reassessment.  See every current rule in <a href="learn.html#ca-rules">California Solar Rules</a>.</div></div>
  <img src="assets/img/pv-09.jpg" alt="Solar electric system in Dana Point" loading="lazy">
 </div></section>
 
@@ -316,6 +316,51 @@ portfolio = hero("Portfolio","A few of the thousands of systems we've installed 
 page("portfolio.html","Portfolio | Vasco Solar","Solar pool heating, solar electric and battery installations by Vasco Solar across Southern California.", portfolio)
 
 # ---------------------------------------------------------------- LEARN
+
+RULES = [
+ # (rule, status_key, status_label, sort_date, date_label, meaning_html, source_label, source_url)
+ ("Federal 30% solar tax credit (Section 25D)","ended","Ended","2025-12-31","Dec 31, 2025",
+  "Homeowners who buy solar or batteries installed after 2025 can no longer claim the credit.  Leasing companies may still claim a commercial credit on projects that start construction by July 4, 2026 or go into service by the end of 2027.",
+  "SEIA summary of the 2025 federal budget law","https://seia.org/?p=12215"),
+ ("Solar property tax exclusion","ending","Ends soon","2027-01-01","Jan 1, 2027",
+  "Solar finished before January 1, 2027 is not added to your assessed value, and it stays excluded until the home changes ownership.  Systems finished after that date can be assessed.  <b>Install in 2026 to keep the exclusion.</b>",
+  "SB 710, signed Oct 3, 2025","https://calmatters.digitaldemocracy.org/bills/ca_202520260sb710"),
+ ("Plug-in (balcony) solar, SB 868","coming","Coming","2027-01-01","Jan 1, 2027",
+  "Renters and homeowners can plug in up to 1,200 watts of UL-certified solar without a utility agreement or fees (that exemption runs through 2030).  It offsets your own use only and earns no export credit.",
+  "SB 868, signed Sept 30, 2026","https://mgrid.org/2026/10/02/newsom-signs-californias-1200-w-plug-in-solar-law-as-the-tenth-state-but-the-utility-exemption-expires-in-2030/"),
+ ("Solar Billing Plan (net billing)","active","In effect","2023-04-15","Apr 15, 2023",
+  "New SCE solar customers earn hourly export credits set by the CPUC, locked for nine years, on time-of-use rate TOU-D-PRIME (peak 4 to 9 p.m.).  Customers who enroll before 2028 get an Energy Export Bonus of about $0.04 per kWh ($0.09 if income-qualified).  Exports are worth most in the evening, which makes a battery more valuable.",
+  "SCE Solar Billing Plan","https://www.sce.com/clean-energy-efficiency/solar-generating-your-own-power/billing-incentives/solar-billing-plan"),
+ ("Legacy net metering (NEM 1.0 and 2.0)","active","In effect","2023-04-14","Before Apr 15, 2023",
+  "Systems connected before April 15, 2023 keep their original net metering terms for 20 years from interconnection, and the agreement stays with the home when it is sold.  A 2025 bill (AB 942) that would have ended it on sale was amended to remove that provision.",
+  "CALSSA, July 15, 2025","https://calssa.org/press-releases/2025/7/15/senate-energy-committee-amends-controversial-ab-942-to-protect-net-metering-contracts-for-solar-users"),
+ ("Monthly fixed charge on electric bills","active","In effect","2025-11-01","Nov 2025 (SCE)",
+  "SCE's Base Services Charge is about $24.15 a month for most households, about $12 for FERA and about $6 for CARE, offset partly by lower per-kWh rates.  Solar credits cannot pay it, so every solar home pays it.  SDG&amp;E started in October 2025 and PG&amp;E in March 2026.",
+  "NRG Clean Power summary of the CPUC decision","https://nrgcleanpower.com/learning-center/the-new-california-fixed-charge-what-it-means-for-your-electricity-bill/"),
+ ("Title 24: pool and spa heating","active","In effect","2026-01-01","Jan 1, 2026",
+  "New pools and spas, and existing ones getting heat for the first time, can no longer use a gas-only heater.  Compliant options are solar thermal collectors, a heat pump, or a hybrid that gets most of its heat from renewables.",
+  "California Energy Commission, 2025 Energy Code","https://www.energy.ca.gov/sites/default/files/2025-06/2025_Energy_Code_Overview_ADA.pdf"),
+ ("Title 24: new homes","active","In effect","2026-01-01","Jan 1, 2026",
+  "Solar has been required on most new homes since 2020.  The 2025 code adds electric-ready wiring and space for future batteries, and the solar rules reach major renovations, ADUs and additions.",
+  "California Energy Commission, 2025 Energy Code","https://www.energy.ca.gov/sites/default/files/2025-06/2025_Energy_Code_Overview_ADA.pdf"),
+ ("California Solar Rights Act","active","In effect","1978-01-01","Since 1978",
+  "HOAs and local rules cannot ban solar, or impose restrictions that significantly raise its cost or cut its performance.",
+  "Civil Code Section 714","https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&amp;sectionNum=714"),
+ ("Instant online solar permits (SolarAPP+, SB 379)","active","In effect","2023-09-30","Sept 2023 / Sept 2024",
+  "Cities and counties must offer automated online permitting for standard home solar and battery systems (larger cities by Sept 30, 2023, smaller ones by Sept 30, 2024).  That means faster permits and installs in most of Orange and Los Angeles County.",
+  "CEC permitting dashboard","https://www.energy.ca.gov/residential-solar-permitting-program-dashboard"),
+ ("Battery rebates (SGIP)","active","Funds limited","2026-03-01","Ongoing",
+  "The Self-Generation Incentive Program pays rebates on home batteries for SCE, PG&amp;E, SDG&amp;E and SoCalGas customers, with much larger amounts for high fire-risk areas, medical baseline and income-qualified households.  Budgets can run out, so check availability before you buy.",
+  "SGIP program site","https://www.selfgenca.com/"),
+]
+def rules_table():
+    rows = "".join(
+      f'<tr><td><b>{r}</b></td><td data-sort="{sk}"><span class="chip chip-{sk}">{sl}</span></td>'
+      f'<td data-sort="{d}">{dl}</td><td>{m}</td><td><a href="{u}" rel="noopener">{src}</a></td></tr>'
+      for r,sk,sl,d,dl,m,src,u in RULES)
+    return ('<div class="table-scroll"><table class="data rules"><thead><tr><th>Rule</th><th>Status</th><th>Effective</th>'
+            '<th>What it means for you</th><th>Source</th></tr></thead><tbody>' + rows + '</tbody></table></div>')
+
 def faq(items):
     return '<div class="faq">' + "".join(f'<div class="faq-item"><h3>{q}</h3>{a if a.startswith("<") else "<p>"+a+"</p>"}</div>' for q,a in items) + '</div>'
 
@@ -345,10 +390,11 @@ dhw = [
 ]
 
 learn = hero("Solar Education","Straight answers about solar electricity, pool heating, hot water, net metering and your rights as a homeowner.","pool-3.jpg") + """
-<nav class="subnav"><div class="wrap"><a href="#electric">Solar Electric FAQ</a><a href="#pool">Pool Heating FAQ</a><a href="#operation">Pool System Operation</a><a href="#hot-water">Hot Water FAQ</a><a href="#net-metering">Net Metering</a><a href="#solar-rights">Solar Rights Act</a></div></nav>
-<section id="electric"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar electric</h2>""" + faq(electric) + """</div></section>
-<section class="alt" id="pool"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar pool heating</h2>""" + faq(pool) + """</div></section>
-<section id="operation"><div class="wrap"><span class="eyebrow">Owner's guide</span><h2>Solar pool system operation</h2>
+<nav class="subnav"><div class="wrap"><a href="#ca-rules">California Solar Rules</a><a href="#electric">Solar Electric FAQ</a><a href="#pool">Pool Heating FAQ</a><a href="#operation">Pool System Operation</a><a href="#hot-water">Hot Water FAQ</a><a href="#net-metering">Net Metering</a><a href="#solar-rights">Solar Rights Act</a></div></nav>
+<section id="ca-rules"><div class="wrap"><span class="eyebrow">What changed</span><h2>California solar rules, 2026</h2><p class="lede">The laws, rate changes and code updates that affect buying solar in California right now, in plain English.  Click any column heading to sort.</p><p class="reviewed">Last reviewed: November 8, 2026</p>""" + rules_table() + """<div class="note">This is a summary, not legal or tax advice.  Call us at (714) 968-8845 and we will explain how each rule applies to your home.</div></div></section>
+<section class="alt" id="electric"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar electric</h2>""" + faq(electric) + """</div></section>
+<section id="pool"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar pool heating</h2>""" + faq(pool) + """</div></section>
+<section class="alt" id="operation"><div class="wrap"><span class="eyebrow">Owner's guide</span><h2>Solar pool system operation</h2>
  <div class="note"><b>Before you start:</b> drain the system for winter before November 15 and keep it off until March 1.  Many systems drain automatically, so check with us if you're not sure.</div>
  <div class="grid g2" style="margin-top:28px">
   <div class="card"><h3>Normal startup</h3><ol class="steps"><li>Confirm the pool pump is running and the power indicator is lit.</li><li>Set the solar controller's function switch to Automatic.</li><li>Set your temperature between 60°F and 104°F.</li><li>When water enters the collectors, filter pressure rises about 4–7 psi and air purges for roughly 3 minutes (you'll see bubbles).</li></ol></div>
@@ -357,8 +403,8 @@ learn = hero("Solar Education","Straight answers about solar electricity, pool h
   <div class="card"><h3>Troubleshooting &amp; tips</h3><ul><li><b>No "flow through collector" light:</b> confirm Automatic, then try the manual flow setting; if still off, call us.</li><li><b>No bubbles at startup:</b> check the pump, controller mode, connections and temperature setting.</li><li><b>Bubbles that won't stop:</b> clean or backwash the filter and empty the pump basket.</li><li>Run the pump roughly 11 AM to 5 PM, pull from the main drain, and aim return jets downward.</li></ul></div>
  </div>
 </div></section>
-<section class="alt" id="hot-water"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar hot water</h2>""" + faq(dhw) + """</div></section>
-<section id="net-metering"><div class="wrap"><span class="eyebrow">Your utility bill</span><h2>Net metering &amp; the Solar Billing Plan</h2>
+<section id="hot-water"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar hot water</h2>""" + faq(dhw) + """</div></section>
+<section class="alt" id="net-metering"><div class="wrap"><span class="eyebrow">Your utility bill</span><h2>Net metering &amp; the Solar Billing Plan</h2>
  <p class="lede">Which program you're on depends on when your system was interconnected.  Click any column heading to sort.</p>
  <table class="data" style="margin-top:24px"><thead><tr><th>Program</th><th>Utility</th><th>Systems installed</th><th>Bill guide</th></tr></thead><tbody>
   <tr><td>NEM 1.0</td><td>SCE</td><td>Before June 30, 2017</td><td><a href="https://www.sce.com/sites/default/files/inline-files/NEM%2B1.0%2BUYB%2B0617%2Br3.pdf" rel="noopener">Understanding your NEM 1.0 bill (PDF)</a></td></tr>
@@ -367,7 +413,7 @@ learn = hero("Solar Education","Straight answers about solar electricity, pool h
   <tr><td>Net Metering</td><td>SDG&amp;E</td><td>See statement guide</td><td><a href="assets/img/doc-sdge-net-metering.pdf">Understanding your SDG&amp;E bill (PDF)</a></td></tr>
  </tbody></table>
 </div></section>
-<section class="alt" id="solar-rights"><div class="wrap split">
+<section id="solar-rights"><div class="wrap split">
  <div><span class="eyebrow">Know your rights</span><h2>California Solar Rights Act</h2>
  <p>California law limits restrictions that HOAs and others can place on solar energy systems, and makes it illegal for an HOA to prohibit a solar installation.</p>
  <p><a class="btn btn-navy" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&amp;sectionNum=714" rel="noopener">Read Civil Code Section 714</a></p></div>

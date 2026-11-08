@@ -31,7 +31,7 @@ document.querySelectorAll('table.data').forEach(table => {
     th.classList.add(asc ? 'asc' : 'desc');
     const body = table.tBodies[0];
     [...body.rows].sort((a, b) => {
-      const x = a.cells[i].innerText.trim(), y = b.cells[i].innerText.trim();
+      const x = a.cells[i].dataset.sort || a.cells[i].innerText.trim(), y = b.cells[i].dataset.sort || b.cells[i].innerText.trim();
       return (asc ? 1 : -1) * x.localeCompare(y, undefined, { numeric: true });
     }).forEach(r => body.appendChild(r));
   }));
