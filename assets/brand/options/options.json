@@ -1,0 +1,152 @@
+[
+ {
+  "n": 1,
+  "file": "option-01.svg",
+  "font": "Michroma",
+  "style": "Solid white"
+ },
+ {
+  "n": 2,
+  "file": "option-02.svg",
+  "font": "Michroma",
+  "style": "White, sky edge"
+ },
+ {
+  "n": 3,
+  "file": "option-03.svg",
+  "font": "Michroma",
+  "style": "Gold"
+ },
+ {
+  "n": 4,
+  "file": "option-04.svg",
+  "font": "Michroma",
+  "style": "Outlined, original style"
+ },
+ {
+  "n": 5,
+  "file": "option-05.svg",
+  "font": "Michroma",
+  "style": "White, wide spacing"
+ },
+ {
+  "n": 6,
+  "file": "option-06.svg",
+  "font": "Krona One",
+  "style": "Solid white"
+ },
+ {
+  "n": 7,
+  "file": "option-07.svg",
+  "font": "Krona One",
+  "style": "White, sky edge"
+ },
+ {
+  "n": 8,
+  "file": "option-08.svg",
+  "font": "Krona One",
+  "style": "Gold"
+ },
+ {
+  "n": 9,
+  "file": "option-09.svg",
+  "font": "Krona One",
+  "style": "Outlined, original style"
+ },
+ {
+  "n": 10,
+  "file": "option-10.svg",
+  "font": "Krona One",
+  "style": "White, wide spacing"
+ },
+ {
+  "n": 11,
+  "file": "option-11.svg",
+  "font": "Syncopate Bold",
+  "style": "Solid white"
+ },
+ {
+  "n": 12,
+  "file": "option-12.svg",
+  "font": "Syncopate Bold",
+  "style": "White, sky edge"
+ },
+ {
+  "n": 13,
+  "file": "option-13.svg",
+  "font": "Syncopate Bold",
+  "style": "Gold"
+ },
+ {
+  "n": 14,
+  "file": "option-14.svg",
+  "font": "Syncopate Bold",
+  "style": "Outlined, original style"
+ },
+ {
+  "n": 15,
+  "file": "option-15.svg",
+  "font": "Syncopate Bold",
+  "style": "White, wide spacing"
+ },
+ {
+  "n": 16,
+  "file": "option-16.svg",
+  "font": "Montserrat Bold",
+  "style": "Solid white"
+ },
+ {
+  "n": 17,
+  "file": "option-17.svg",
+  "font": "Montserrat Bold",
+  "style": "White, sky edge"
+ },
+ {
+  "n": 18,
+  "file": "option-18.svg",
+  "font": "Montserrat Bold",
+  "style": "Gold"
+ },
+ {
+  "n": 19,
+  "file": "option-19.svg",
+  "font": "Montserrat Bold",
+  "style": "Outlined, original style"
+ },
+ {
+  "n": 20,
+  "file": "option-20.svg",
+  "font": "Montserrat Bold",
+  "style": "White, wide spacing"
+ },
+ {
+  "n": 21,
+  "file": "option-21.svg",
+  "font": "Exo 2 Bold",
+  "style": "Solid white"
+ },
+ {
+  "n": 22,
+  "file": "option-22.svg",
+  "font": "Exo 2 Bold",
+  "style": "White, sky edge"
+ },
+ {
+  "n": 23,
+  "file": "option-23.svg",
+  "font": "Exo 2 Bold",
+  "style": "Gold"
+ },
+ {
+  "n": 24,
+  "file": "option-24.svg",
+  "font": "Exo 2 Bold",
+  "style": "Outlined, original style"
+ },
+ {
+  "n": 25,
+  "file": "option-25.svg",
+  "font": "Exo 2 Bold",
+  "style": "White, wide spacing"
+ }
+]
