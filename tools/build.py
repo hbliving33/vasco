@@ -41,8 +41,9 @@ def page(fname, title, desc, body):
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="assets/img/hero.jpg">
-<link rel="icon" href="assets/img/favicon.ico">
+<meta property="og:image" content="assets/brand/kit/social-share.jpg">
+<link rel="icon" href="assets/brand/kit/favicon.ico">
+<link rel="apple-touch-icon" href="assets/brand/kit/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
