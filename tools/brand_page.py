@@ -64,8 +64,8 @@ zoom = "".join([
          [("zoom-light.jpg", "JPG, 1920 x 1080"), ("zoom-light.png", "PNG, 1920 x 1080")], wide=True),
 ])
 swatches = "".join(f'<div class="sw"><span style="background:{c}"></span><b>{n}</b><code>{c}</code><small>{u}</small></div>' for n, c, u in [
-    ("Vasco blue", BLUE, "Logo letters, oval, headings"), ("Sky", SKY, "Edge around the logo letters"), ("Sun yellow", LEMON, "Rays in the full-color logo"),
-    ("Sun gold", GOLD, "Rays on dark backgrounds, buttons"), ("Navy", NAVY, "Dark backgrounds, header, footer"), ("Mist", MIST, "Light page backgrounds")])
+    ("Vasco blue", BLUE, "Letters, oval, headings"), ("Sky", SKY, "Edge around letters"), ("Sun yellow", LEMON, "Full-color logo rays"),
+    ("Sun gold", GOLD, "Dark-background rays"), ("Navy", NAVY, "Header and footer"), ("Mist", MIST, "Page backgrounds")])
 fonts = "".join(f'<div class="font"><div class="spec" style="font-family:{fam}">{sample}</div><b>{name}</b><small>{use}</small></div>' for fam, sample, name, use in [
     ("Outfit, Arial, sans-serif", "Vasco Solar", "Outfit", "Website headings (Google Fonts, free)"),
     ("Inter, Arial, sans-serif", "Vasco Solar", "Inter", "Website body text (Google Fonts, free)"),
@@ -106,6 +106,7 @@ h2{{font:700 26px Outfit,Arial;margin:52px 0 16px;padding-bottom:10px;border-bot
 .dl:hover{{border-color:{BLUE};background:#f2f6fc}}
 .dl b{{font:700 12px Inter;letter-spacing:.06em;color:#fff;background:{BLUE};border-radius:2px;text-align:center;padding:4px 0}}
 .dl span{{font-size:14px}} .dl i{{font-style:normal;font-size:13px;color:#6b7888}}
+.topcolors{{margin:22px 0 0;scroll-margin-top:16px}}
 .sws{{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}}
 .sw{{background:#fff;border:1px solid #c9d0da;border-radius:3px;padding:12px;display:flex;flex-direction:column}}
 .sw span{{height:84px;border-radius:2px;border:1px solid rgba(0,0,0,.08);margin-bottom:10px}}
@@ -124,13 +125,13 @@ footer{{margin:60px 0 0;padding:26px 0;background:{NAVY};color:#a9b8c8;font-size
 <main class="wrap">
 <h1>Vasco Solar brand kit</h1>
 <p class="lead">Every approved Vasco Solar logo, icon and template, ready to download.  The logo is a high-definition redraw of the original, so it stays sharp at any size, from a business card to a truck wrap.</p>
-<nav class="jump"><a href="#logo">Logo</a><a href="#icon">Icon</a><a href="#office">Word and PowerPoint</a><a href="#m365">Microsoft 365 and social</a><a href="#zoom">Zoom backgrounds</a><a href="#colors">Colors</a><a href="#fonts">Fonts</a><a href="#use">Using the logo</a></nav>
+<nav class="jump"><a href="#colors">Colors</a><a href="#logo">Logo</a><a href="#icon">Icon</a><a href="#office">Word and PowerPoint</a><a href="#m365">Microsoft 365 and social</a><a href="#zoom">Zoom backgrounds</a><a href="#fonts">Fonts</a><a href="#use">Using the logo</a></nav>
+<section id="colors" class="topcolors"><div class="sws">{swatches}</div></section>
 <h2 id="logo">Logo</h2><div class="grid">{logos}</div>
 <h2 id="icon">Icon</h2><div class="grid">{icons}</div>
 <h2 id="office">Word and PowerPoint</h2><div class="grid g2 tall">{office}</div>
 <h2 id="m365">Microsoft 365 and social</h2><div class="grid g2">{m365}</div>
 <h2 id="zoom">Zoom backgrounds</h2><div class="grid g2">{zoom}</div>
-<h2 id="colors">Colors</h2><div class="sws">{swatches}</div>
 <h2 id="fonts">Fonts</h2><div class="fonts">{fonts}</div>
 <h2 id="use">Using the logo</h2><div class="rules"><ul>
 <li>Use the full-color logo on white or light backgrounds, and the reverse logo on navy or other dark backgrounds.</li>
