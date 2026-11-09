@@ -13,21 +13,21 @@ P = json.loads((ROOT / "tools" / "brand" / "paths.json").read_text())
 
 BLUE, SKY, LEMON, GOLD, NAVY, MIST = "#1850a0", "#86d2ec", "#f2e600", "#f4c21c", "#0e2740", "#f5f7fa"
 
-def logo_svg(ray, letters, outline=None, oval=BLUE, oval_stroke=None, tag_fill=BLUE, tag_stroke="#ffffff", knockout=False):
+def logo_svg(ray, letters, outline=None, oval=BLUE, oval_stroke=SKY, tag_fill="#ffffff", tag_stroke=None, knockout=False):
     """knockout=True (one-color versions): rays stop short of the letters and oval, and the tagline is cut out of a solid oval."""
     o = f'<path d="{P["outline"]}" fill="{outline}"/>' if outline else ""
-    os_ = f' stroke="{oval_stroke}" stroke-width="0.6"' if oval_stroke else ""
-    head = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 210 106" role="img" aria-label="Vasco Solar Energy">'
+    os_ = f' stroke="{oval_stroke}" stroke-width="0.8"' if oval_stroke else ""
+    head = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 212 106" role="img" aria-label="Vasco Solar Energy">'
     if knockout:
         defs = (f'<defs><mask id="r"><rect x="0" y="0" width="220" height="140" fill="#fff"/>'
                 f'<path d="{P["outline"]}" fill="#000"/><path d="{P["oval"]}" fill="#000" stroke="#000" stroke-width="2.2"/></mask>'
                 f'<mask id="t"><rect x="0" y="0" width="220" height="140" fill="#fff"/>'
-                f'<path d="{P["tagline"]}" fill="none" stroke="#000" stroke-width="0.55" stroke-linejoin="round"/></mask></defs>')
+                f'<path d="{P["tagline"]}" fill="#000"/></mask></defs>')
         return (head + defs + f'<path d="{P["rays"]}" fill="{ray}" mask="url(#r)"/><path d="{P["letters"]}" fill="{letters}"/>'
                 f'<path d="{P["oval"]}" fill="{letters}" mask="url(#t)"/></svg>')
     return (head + f'<path d="{P["rays"]}" fill="{ray}"/>{o}<path d="{P["letters"]}" fill="{letters}"/>'
             f'<path d="{P["oval"]}" fill="{oval}"{os_}/>'
-            f'<path d="{P["tagline"]}" fill="{tag_fill}" stroke="{tag_stroke}" stroke-width="0.55" stroke-linejoin="round"/></svg>')
+            f'<path d="{P["tagline"]}" fill="{tag_fill}"' + (f' stroke="{tag_stroke}" stroke-width="0.55"' if tag_stroke else '') + '/></svg>')
 
 # Icon: the V with the sun rising behind it
 def icon_rays(cx=33.4, cy=56):
@@ -80,7 +80,7 @@ def svgimg(svg, w):  # inline svg sized by width
 
 with sync_playwright() as p:
     pw = p.chromium.launch()
-    LW, LH = 2400, round(2400 * 106 / 210)
+    LW, LH = 2400, round(2400 * 106 / 212)
     for n in ["logo-color", "logo-reverse", "logo-white", "logo-blue"]:
         raster(pw, page(svgimg(SVGS[n + ".svg"], LW), LW, LH), LW, LH, KIT / f"{n}.png")
     to_jpg(KIT / "logo-color.png", KIT / "logo-color-on-white.jpg", "#ffffff")
@@ -89,6 +89,8 @@ with sync_playwright() as p:
     to_jpg(KIT / "logo-blue.png", KIT / "logo-blue-on-white.jpg", "#ffffff")
     for n in ["icon-color", "icon-reverse", "icon-white", "app-icon"]:
         raster(pw, page(svgimg(SVGS[n + ".svg"], 1024), 1024, 1024), 1024, 1024, KIT / f"{n}.png")
+    to_jpg(KIT / "icon-color.png", KIT / "icon-color-on-white.jpg", "#ffffff")
+    to_jpg(KIT / "icon-white.png", KIT / "icon-white-on-blue.jpg", BLUE)
     app = Image.open(KIT / "app-icon.png")
     app.save(KIT / "app-icon.ico", sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
     Image.open(KIT / "icon-reverse.png").save(KIT / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])

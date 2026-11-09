@@ -66,8 +66,8 @@ zoom = "".join([
 import json as _json
 OPTS = _json.loads((ROOT / "assets/brand/options/options.json").read_text())
 options = "".join(
-    f'<article class="opt"><div class="opv"><img src="assets/brand/options/{o['file']}" alt="Logo option {o['n']}" loading="lazy"></div>'
-    f'<div class="opb"><b>Option {o['n']}</b><span>{o['font']}</span><span>{o['style']}</span>'
+    f'<article class="opt{" sel" if o["n"] == 17 else ""}"><div class="opv"><img src="assets/brand/options/{o['file']}" alt="Logo option {o['n']}" loading="lazy"></div>'
+    f'<div class="opb"><b>Option {o['n']}{' (selected)' if o['n'] == 17 else ''}</b><span>{o['font']}</span><span>{o['style']}</span>'
     f'<a class="dl1" href="assets/brand/options/{o['file']}" download>SVG</a></div></article>' for o in OPTS)
 swatches = "".join(f'<div class="sw"><span style="background:{c}"></span><b>{n}</b><code>{c}</code><small>{u}</small></div>' for n, c, u in [
     ("Vasco blue", BLUE, "Letters, oval, headings"), ("Sky", SKY, "Edge around letters"), ("Sun yellow", LEMON, "Full-color logo rays"),
@@ -114,6 +114,7 @@ h2{{font:700 26px Outfit,Arial;margin:52px 0 16px;padding-bottom:10px;border-bot
 .dl span{{font-size:14px}} .dl i{{font-style:normal;font-size:13px;color:#6b7888}}
 .opts{{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}}
 .opt{{background:#fff;border:1px solid #c9d0da;border-radius:3px;display:flex;flex-direction:column;overflow:hidden}}
+.opt.sel{{border:2px solid {GOLD}}}
 .opv{{padding:16px 12px;border-bottom:1px solid #c9d0da;display:grid;place-items:center;height:150px}} .opv img{{width:100%;max-height:118px;object-fit:contain}}
 .opb{{padding:12px 14px;display:flex;flex-direction:column;gap:2px;flex:1}} .opb b{{font:700 16px Outfit,Arial;color:{NAVY}}} .opb span{{font-size:13.5px;color:#4a5869}}
 .dl1{{margin-top:10px;align-self:flex-start;text-decoration:none;font:700 12px Inter;letter-spacing:.06em;color:#fff;background:{BLUE};border-radius:2px;padding:5px 12px}} .dl1:hover{{background:{NAVY}}}
@@ -141,7 +142,7 @@ footer{{margin:60px 0 0;padding:26px 0;background:{NAVY};color:#a9b8c8;font-size
 <nav class="jump"><a href="#colors">Colors</a><a href="#logo">Logo</a><a href="#options">Logo options</a><a href="#icon">Icon</a><a href="#office">Word and PowerPoint</a><a href="#m365">Microsoft 365 and social</a><a href="#zoom">Zoom backgrounds</a><a href="#fonts">Fonts</a><a href="#use">Using the logo</a></nav>
 <section id="colors" class="topcolors"><div class="sws">{swatches}</div></section>
 <h2 id="logo">Logo</h2><div class="grid">{logos}</div>
-<h2 id="options">Logo options</h2><p class="lead" style="margin:-4px 0 18px">New takes on the "SOLAR ENERGY" oval: five wide fonts close to the original, each in five styles, all with a larger oval so the letters have room.  Pick a number and it becomes the logo in every file above.</p><div class="opts">{options}</div>
+<h2 id="options">Logo options</h2><p class="lead" style="margin:-4px 0 18px">New takes on the "SOLAR ENERGY" oval: five wide fonts close to the original, each in five styles, all with a larger oval so the letters have room.  Option 17 was selected and is now the official logo in every file on this page.</p><div class="opts">{options}</div>
 <h2 id="icon">Icon</h2><div class="grid">{icons}</div>
 <h2 id="office">Word and PowerPoint</h2><div class="grid g2 tall">{office}</div>
 <h2 id="m365">Microsoft 365 and social</h2><div class="grid g2">{m365}</div>
