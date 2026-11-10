@@ -33,7 +33,6 @@ cert-enphase.jpg https://www.vascosolar.com/wp-content/uploads/2025/04/Enphase-L
 logo-solar-industries.png https://www.vascosolar.com/wp-content/uploads/2014/09/logo-solar_industries-328x74.png
 logo-enphase.png https://www.vascosolar.com/wp-content/uploads/2015/04/enphase_logo.png
 logo-solaredge.jpg https://www.vascosolar.com/wp-content/uploads/2025/03/SolarEdgeLOGO-300x144.jpg
-logo-sma.png https://www.vascosolar.com/wp-content/uploads/2015/04/sma_logo.png
 logo-quickmount.png https://www.vascosolar.com/wp-content/uploads/2015/04/quick_mount_pv_logo.png
 logo-unirac.png https://www.vascosolar.com/wp-content/uploads/2015/04/unirac_logo.png
 logo-aquatherm.png https://www.vascosolar.com/wp-content/uploads/2015/02/AquathermLogoNew-1.png

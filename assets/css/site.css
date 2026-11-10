@@ -260,3 +260,89 @@ footer.site .logo-bw{height:80px}
   nav.main{top:87px}
   html{scroll-padding-top:98px}
 }
+
+/* home: What We Do — bigger heading, service boxes link to details */
+.whatwedo h2{font-size:clamp(2.6rem,5.6vw,4.1rem);letter-spacing:-.01em;margin-bottom:.3em}
+.whatwedo h2::after{content:"";display:block;width:72px;height:4px;background:var(--sun);margin:.35em auto 0}
+.card-link{position:relative;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s;padding-bottom:52px}
+.card-link:hover,.card-link:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--sun)}
+.card-link .go{position:absolute;right:22px;bottom:16px;width:32px;height:32px;display:grid;place-items:center;background:var(--navy);color:#fff;border-radius:var(--radius);font-size:1.1rem;transition:background .18s}
+.card-link:hover .go{background:var(--sun);color:var(--navy)}
+
+/* Google / Yelp ratings */
+.ratings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:760px;margin:0 auto}
+.rating{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;color:var(--ink);transition:border-color .18s,box-shadow .18s}
+.rating:hover{border-color:var(--sun);box-shadow:var(--shadow)}
+.rlogo{flex:0 0 48px;height:48px;display:grid;place-items:center;border-radius:var(--radius);font:700 1.6rem var(--head);color:#fff}
+.rl-g{background:#4285f4}.rl-y{background:#d32323}
+.rbody{flex:1;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:10px;row-gap:2px}
+.rbody b{font-family:var(--head);font-size:1.8rem;color:var(--navy);line-height:1}
+.rbody small{grid-column:1/-1;color:var(--muted);font-size:.88rem}
+.rstars{position:relative;display:inline-block;color:#d6dce4;letter-spacing:2px;font-size:1.1rem;line-height:1}
+.rstars::before{content:"★★★★★";position:absolute;left:0;top:0;width:var(--pct);overflow:hidden;color:var(--sun);white-space:nowrap}
+.rgo{font-family:var(--head);font-weight:600;font-size:.88rem;color:var(--navy-2);white-space:nowrap}
+.ratings-asof{text-align:center;font-size:.8rem;color:var(--muted);margin:10px 0 36px}
+@media (max-width:700px){.ratings{grid-template-columns:1fr}.rgo{display:none}}
+
+/* about: center an odd last card so the grid stays balanced */
+@media (min-width:641px){.grid.g2>.card:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 12px)}}
+
+/* services: photo banner on top with the heading over it */
+.svc-banner{position:relative;border-radius:var(--radius);overflow:hidden;margin-bottom:40px;background:var(--navy)}
+.svc-banner img{width:100%;height:clamp(240px,32vw,400px);object-fit:cover}
+.svc-banner::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,39,64,.9) 0%,rgba(14,39,64,.6) 45%,rgba(14,39,64,.05) 85%)}
+.svc-banner .ov{position:absolute;z-index:2;left:0;bottom:0;top:0;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,5vw,56px);max-width:680px}
+.svc-banner .eyebrow{color:var(--sun);font-size:.9rem}
+.svc-banner h2{color:#fff;font-size:clamp(2rem,4.4vw,3.3rem);margin:0;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.svc .split>.card{height:auto}
+
+/* solar education: solar panel tiles */
+.spanels{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 24px}
+.spanel{--tilt:0deg;position:relative;flex:0 0 calc(25% - 18px);min-width:210px;padding:0 0 22px;border:0;background:none;cursor:pointer;font:inherit;text-align:left;perspective:800px}
+.spanel .cells{position:relative;display:flex;flex-direction:column;aspect-ratio:4/5;padding:22px 20px 18px;overflow:hidden;border-radius:4px;color:#fff;
+  border:8px solid #c9d2dc;outline:1px solid #8c99a8;
+  background:
+   linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px) 0 0/100% 16.66%,
+   linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px) 0 0/25% 100%,
+   linear-gradient(90deg,transparent 49.6%,rgba(220,230,240,.25) 49.6%,rgba(220,230,240,.25) 50.4%,transparent 50.4%),
+   linear-gradient(155deg,#2a64a8 0%,#163d6b 45%,#0b2340 100%);
+  box-shadow:0 10px 24px rgba(14,39,64,.28);transform:rotateX(var(--tilt));transform-origin:bottom center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,filter .35s}
+.spanel .legs{position:absolute;left:22%;right:22%;bottom:0;height:24px;border-left:5px solid #8c99a8;border-right:5px solid #8c99a8}
+.spanel .legs::after{content:"";position:absolute;left:-14px;right:-14px;bottom:0;height:5px;background:#8c99a8;border-radius:2px}
+.spanel .pico{width:48px;height:48px;display:grid;place-items:center;background:rgba(244,165,28,.16);border:1px solid rgba(244,165,28,.55);border-radius:var(--radius);color:var(--sun);margin-bottom:auto}
+.spanel .pico svg{width:26px;height:26px}
+.spanel .pt{font:700 1.3rem/1.15 var(--head);margin-top:18px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.spanel .ps{color:#c7d6e6;font-size:.92rem;margin-top:4px}
+.spanel .meter{display:block;height:6px;margin-top:14px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
+.spanel .meter i{display:block;height:100%;width:12%;background:linear-gradient(90deg,var(--sun),#ffd56a);transition:width .6s ease}
+.spanel .tap{font-family:var(--head);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);margin-top:8px}
+.spanel .glint{position:absolute;top:-30%;left:-60%;width:40%;height:160%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);pointer-events:none}
+.spanel .sun-pop{position:absolute;z-index:3;top:-14px;right:-6px;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ffe08a 0 40%,var(--sun) 41% 62%,transparent 63%);box-shadow:0 0 0 0 rgba(244,165,28,.5);transform:scale(0) rotate(-90deg);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.spanel .sun-pop::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:repeating-conic-gradient(var(--sun) 0 8deg,transparent 8deg 30deg);-webkit-mask:radial-gradient(circle,transparent 58%,#000 60%);mask:radial-gradient(circle,transparent 58%,#000 60%);animation:spin 8s linear infinite}
+.spanel:hover,.spanel:focus-visible{--tilt:10deg;outline:none}
+.spanel:hover .cells,.spanel:focus-visible .cells{box-shadow:0 18px 36px rgba(14,39,64,.38),0 0 0 3px var(--sun)}
+.spanel:hover .glint,.spanel:focus-visible .glint{animation:glint .9s ease}
+.spanel:hover .sun-pop,.spanel:focus-visible .sun-pop{transform:scale(1) rotate(0)}
+.spanel:hover .meter i,.spanel:focus-visible .meter i{width:100%}
+.spanel.zap .cells{animation:zap .45s ease}
+@keyframes glint{from{left:-60%}to{left:130%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes zap{0%{filter:brightness(1)}40%{filter:brightness(1.8) saturate(1.3)}100%{filter:brightness(1)}}
+@media (max-width:980px){.spanel{flex-basis:calc(33.33% - 16px)}}
+@media (max-width:700px){.spanels{gap:20px 14px}.spanel{flex-basis:calc(50% - 7px);min-width:0}.spanel .cells{aspect-ratio:3/4;padding:16px 14px 14px;border-width:6px}.spanel .pt{font-size:1.08rem}.spanel .tap{display:none}}
+@media (prefers-reduced-motion:reduce){.spanel .cells,.spanel .sun-pop,.spanel .meter i{transition:none}.spanel .glint,.spanel .sun-pop::before,.spanel.zap .cells{animation:none}}
+
+/* solar education: pop-up panel */
+dialog.edu{width:min(1060px,94vw);max-height:88vh;padding:0;border:0;border-top:6px solid var(--sun);border-radius:var(--radius);box-shadow:0 30px 80px rgba(5,15,25,.45);color:var(--ink)}
+dialog.edu::backdrop{background:rgba(8,26,44,.72)}
+dialog.edu[open]{animation:popin .28s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes popin{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.edu-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;padding:18px 24px;background:var(--navy);color:#fff}
+.edu-head .pico{flex:0 0 40px;height:40px;display:grid;place-items:center;background:rgba(244,165,28,.16);border:1px solid rgba(244,165,28,.55);border-radius:var(--radius);color:var(--sun)}
+.edu-head .pico svg{width:22px;height:22px}
+.edu-head h2{flex:1;color:#fff;margin:0;font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.edu-x{flex:0 0 40px;height:40px;border:1px solid rgba(255,255,255,.35);background:none;color:#fff;font-size:1.7rem;line-height:1;border-radius:var(--radius);cursor:pointer}
+.edu-x:hover{background:var(--sun);color:var(--navy);border-color:var(--sun)}
+.edu-body{padding:24px clamp(18px,3vw,32px) 32px}
+.edu-body .lede{max-width:none}
+@media (max-width:640px){dialog.edu{width:100vw;max-width:100vw;max-height:92vh;margin:auto 0 0;border-radius:6px 6px 0 0}}

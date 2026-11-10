@@ -52,3 +52,35 @@ document.querySelectorAll('form.estimate').forEach(form => form.addEventListener
 }));
 
 document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+
+// Solar Education: solar panel tiles open their topic in a pop-up
+(function () {
+  const dialogs = document.querySelectorAll('dialog.edu');
+  if (!dialogs.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lastTile = null;
+  function openTopic(id, tile) {
+    const d = document.getElementById(id);
+    if (!d || d.open) return;
+    lastTile = tile || document.querySelector('.spanel[data-open="' + id + '"]');
+    d.showModal();
+    d.querySelector('.edu-body').scrollTop = 0; d.scrollTop = 0;
+    history.replaceState(null, '', '#' + id);
+  }
+  document.querySelectorAll('.spanel').forEach(tile => tile.addEventListener('click', () => {
+    if (reduce) return openTopic(tile.dataset.open, tile);
+    tile.classList.add('zap');
+    setTimeout(() => { tile.classList.remove('zap'); openTopic(tile.dataset.open, tile); }, 260);
+  }));
+  dialogs.forEach(d => {
+    d.querySelector('.edu-x').addEventListener('click', () => d.close());
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });   // click outside the panel
+    d.addEventListener('close', () => {
+      history.replaceState(null, '', location.pathname + location.search);
+      if (lastTile) lastTile.focus({ preventScroll: true });
+    });
+  });
+  const openFromHash = () => { const id = location.hash.slice(1); if (id && document.getElementById(id) && document.getElementById(id).matches('dialog.edu')) openTopic(id); };
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();

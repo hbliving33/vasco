@@ -77,7 +77,7 @@ def page(fname, title, desc, body):
       <li><a href="portfolio.html">Portfolio</a></li><li><a href="go-solar.html#financing">Financing</a></li><li><a href="learn.html">Solar Education</a></li></ul></div>
     <div><h4>Contact</h4><ul>
       <li><a href="{TEL}">{PHONE}</a></li><li>{ADDR.replace(', Fountain', '<br>Fountain')}</li>
-      <li><a href="https://www.facebook.com/pages/Vasco-Solar-Energy/166852197671" rel="noopener">Facebook</a> · <a href="https://instagram.com/vascosolar" rel="noopener">Instagram</a> · <a href="https://www.yelp.com/biz/vasco-solar-energy-construction-huntington-beach" rel="noopener">Yelp</a> · <a href="https://www.youtube.com/channel/UChk1ZMSTl4NAo8vS2-lmLlQ" rel="noopener">YouTube</a></li></ul></div>
+      <li><a href="https://www.facebook.com/pages/Vasco-Solar-Energy/166852197671" rel="noopener">Facebook</a> · <a href="https://instagram.com/vascosolar" rel="noopener">Instagram</a> · <a href="https://www.yelp.com/biz/vasco-solar-fountain-valley" rel="noopener">Yelp</a> · <a href="https://www.youtube.com/channel/UChk1ZMSTl4NAo8vS2-lmLlQ" rel="noopener">YouTube</a></li></ul></div>
   </div>
   <div class="legal"><span>&copy; <span class="year">2026</span> Vasco Solar.  All rights reserved.</span><span>Licensed California Solar Contractor · {LIC}</span></div>
 </div></footer>
@@ -90,6 +90,10 @@ def page(fname, title, desc, body):
 
 def hero(title, sub, img):
     return f'<section class="page-hero" style="background-image:url(assets/img/{img})"><div class="wrap"><h1>{title}</h1><p>{sub}</p></div></section>'
+
+def banner(img, eyebrow, title, alt, pos="center"):
+    return (f'<div class="svc-banner"><img src="assets/img/{img}" alt="{alt}" style="object-position:{pos}">'
+            f'<div class="ov"><span class="eyebrow">{eyebrow}</span><h2>{title}</h2></div></div>')
 
 def card(icon, title, text):
     return f'<div class="card"><div class="ico">{ICON[icon]}</div><h3>{title}</h3><p>{text}</p></div>'
@@ -116,6 +120,24 @@ REVIEWS = [
  ("P M.","","Yelp","Fast service and reasonable prices for solar pool heating tune-ups and repairs."),
 ]
 
+# Ratings shown on the site.  Update these during the monthly website check.
+GOOGLE = {"rating":"4.9","count":"327","url":"https://www.google.com/maps/search/?api=1&query=Vasco%20Solar%20Fountain%20Valley&query_place_id=ChIJ0ZWEAIbf3IARdOXU-DUsnBo"}
+YELP   = {"rating":None,"count":"124","url":"https://www.yelp.com/biz/vasco-solar-fountain-valley"}
+RATINGS_ASOF = "November 2026"
+
+def stars_html(r):
+    if not r: return ""
+    pct = float(r)/5*100
+    return f'<span class="rstars" style="--pct:{pct:.0f}%" aria-hidden="true">★★★★★</span>'
+
+def ratings_bar():
+    g = (f'<a class="rating" href="{GOOGLE["url"]}" rel="noopener" target="_blank"><span class="rlogo rl-g">G</span>'
+         f'<span class="rbody"><b>{GOOGLE["rating"]}</b>{stars_html(GOOGLE["rating"])}<small>{GOOGLE["count"]} Google reviews</small></span><span class="rgo">Read on Google &#8599;</span></a>')
+    yr = f'<b>{YELP["rating"]}</b>{stars_html(YELP["rating"])}' if YELP["rating"] else '<b>Yelp</b><span class="rstars-none"></span>'
+    y = (f'<a class="rating" href="{YELP["url"]}" rel="noopener" target="_blank"><span class="rlogo rl-y">y</span>'
+         f'<span class="rbody">{yr}<small>{YELP["count"]} Yelp reviews</small></span><span class="rgo">Read on Yelp &#8599;</span></a>')
+    return f'<div class="ratings">{g}{y}</div><p class="ratings-asof">Ratings as of {RATINGS_ASOF}</p>'
+
 def review_cards(items):
     out = []
     for n,city,src,txt in items:
@@ -123,9 +145,9 @@ def review_cards(items):
         out.append(f'<div class="review"><div class="stars">★★★★★</div><p>{txt}</p><div class="who">{n}</div><div class="src">{src}{loc}</div></div>')
     return "".join(out)
 
-LOGOS = ["logo-enphase.png","logo-solaredge.jpg","logo-sma.png","logo-aquatherm.png","logo-si.png","logo-sunearth.png",
-         "logo-pentair.jpg","logo-unirac.png","logo-quickmount.png","logo-grundfos.png","cert-franklinwh.png","logo-se-battery.png"]
-logo_strip = '<div class="logos">' + "".join(f'<div><img src="assets/img/{l}" alt=""></div>' for l in LOGOS) + '</div>'
+def svc_link(icon, title, text, anchor):
+    return (f'<a class="card card-link" href="services.html#{anchor}"><div class="ico">{ICON[icon]}</div>'
+            f'<h3>{title}</h3><p>{text}</p><span class="go" aria-hidden="true">&#8594;</span></a>')
 
 home = f"""
 <section class="hero" style="background-image:url(assets/img/hero.jpg)"><div class="wrap">
@@ -135,16 +157,16 @@ home = f"""
   <div class="actions"><a class="btn btn-sun" href="contact.html">Schedule Your Free Estimate</a><a class="btn btn-ghost" href="{TEL}">Call {PHONE}</a></div>
 </div></section>
 <div class="stats"><div class="wrap">
-  <div class="stat"><b>1989–2026</b><span>Years in business</span></div>
+  <div class="stat"><b>40+</b><span>Years in business</span></div>
   <div class="stat"><b>Thousands</b><span>Of systems installed</span></div>
-  <div class="stat"><b>Top 500</b><span>Solar Power World, 2016–2020, 2024 &amp; 2026</span></div>
+  <div class="stat"><b>Top 500</b><span>Solar Power World Top Contractor</span></div>
   <div class="stat"><b>$0 Down</b><span>Financing available</span></div>
 </div></div>
 
 <section><div class="wrap">
-  <div class="head center"><span class="eyebrow">What we do</span><h2>Every kind of solar, under one roof</h2>
-  <p class="lede">Solar electricity, solar pool heating, solar hot water and battery storage, each one designed around your property, your usage and your goals.</p></div>
-  <div class="grid g3">{''.join(card(i,t,d) for i,t,d,a in SERVICES if a not in ('evaluations','commercial','title-24'))}</div>
+  <div class="head center whatwedo"><h2>What We Do</h2>
+  <p class="lede">Every kind of solar, under one roof: solar electricity, solar pool heating, solar hot water and battery storage, each one designed around your property, your usage and your goals.</p></div>
+  <div class="grid g3">{''.join(svc_link(i,t,d,a) for i,t,d,a in SERVICES if a not in ('evaluations','commercial','title-24'))}</div>
 </div></section>
 
 <section class="alt"><div class="wrap split">
@@ -161,15 +183,13 @@ home = f"""
 
 <section><div class="wrap">
   <div class="head center"><span class="eyebrow">Reviews</span><h2>What our customers say</h2></div>
+  {ratings_bar()}
   <div class="grid g3">{review_cards(REVIEWS)}</div>
 </div></section>
 
 <section class="alt"><div class="wrap">
   <div class="head center"><span class="eyebrow">Awards &amp; affiliations</span><h2>Recognized by the industry</h2></div>
   <div class="awards"><img src="assets/img/award-top-contractor-2026.png" alt="Solar Power World Top Solar Contractor 2026"><img src="assets/img/seal-2025.png" alt="Vasco Solar Seal 2025"><img src="assets/img/gold-medal.png" alt="Aquatherm Gold Medal Installer"></div>
-  <div style="height:56px"></div>
-  <div class="head center" style="margin-bottom:28px"><h3>The brands we install</h3></div>
-  {logo_strip}
 </div></section>
 """
 page("index.html","Vasco Solar | Solar Electricity, Pool Heating & Hot Water in Orange County",
@@ -181,31 +201,29 @@ svc_nav = '<nav class="subnav"><div class="wrap">' + "".join(f'<a href="#{a}">{t
 services = hero("Our Services","Custom-designed solar systems, expert service and repair for most types of solar, and compliance help for new construction.","pv-banner.jpg") + svc_nav + f"""
 <div class="wrap">
 
-<div class="svc" id="solar-electricity"><div class="split">
- <div><span class="eyebrow">Solar Electricity (PV)</span><h2>Make your own power</h2>
+<div class="svc" id="solar-electricity">""" + banner("pv-01.jpg","Solar Electricity (PV)","Make your own power","Rooftop solar electric panels installed by Vasco Solar","center 70%") + """<div class="split">
+ <div>
  <p>Photovoltaic modules convert sunlight into electricity.  Systems generate during daylight hours, peaking in the afternoon; clouds, rain and dirty panels reduce output.  California has more homes with solar than any other state, and most systems are connected to the local utility grid.</p>
- <p>When your system produces less than you use, such as at night, the utility or a battery fills the gap.  When it produces more, the surplus flows back to the grid.  It all switches automatically.</p>
- <ul class="checks"><li>Substantially lower electric bills</li><li>Protection from future utility rate increases</li><li>Higher property value without higher property taxes</li><li>Fewer emissions and less dependence on oil</li></ul></div>
- <img src="assets/img/pv-07.jpg" alt="Solar electric system in Costa Mesa" loading="lazy">
+ <p>When your system produces less than you use, such as at night, the utility or a battery fills the gap.  When it produces more, the surplus flows back to the grid.  It all switches automatically.</p></div>
+ <div class="card"><h3>Why homeowners go solar</h3><ul class="checks"><li>Substantially lower electric bills</li><li>Protection from future utility rate increases</li><li>Higher property value without higher property taxes</li><li>Fewer emissions and less dependence on oil</li></ul></div>
 </div></div>
 
-<div class="svc" id="pool-heating"><div class="split">
- <img src="assets/img/pool-08.jpg" alt="Solar pool and hot water system on a tile roof in Corona del Mar" loading="lazy">
- <div><span class="eyebrow">Solar Pool Heating</span><h2>A warmer pool, for months longer</h2>
+<div class="svc" id="pool-heating">""" + banner("pool-01.jpg","Solar Pool Heating","A warmer pool, for months longer","Community pool heated by Vasco Solar pool collectors","center 55%") + """<div class="split">
+ <div>
  <p>A comfortable pool becomes the gathering place for family and friends.  A Vasco system lengthens your swim season, makes the water warmer, and can drastically reduce or eliminate pool-heating costs.  We've installed thousands of systems and worked with nearly every type of solar heating system.</p>
- <h3>Solar Industries SI-2000 collectors</h3>
+ <h3 style="margin-top:28px">How it works</h3>
+ <ol class="steps"><li>You set your desired temperature on the automatic control panel.</li><li>A solar sensor checks for enough solar energy and whether the pool is below your setpoint; it works on hazy or cloudy days too.</li><li>A valve sends pool water up to the collectors, pushed by your existing pool pump.</li><li>The sun heats the water as it flows through the collector tubes, then it returns to the pool, repeating until your target temperature is reached.</li></ol></div>
+ <div class="card"><h3>Solar Industries SI-2000 collectors</h3>
  <ul class="checks"><li>Survived a 23-year life expectancy test in the Arizona desert</li><li>Tens of thousands of installations worldwide since 1976</li><li>Unaffected by pool chemicals; can't rust, corrode or discolor your pool</li><li>NSF-50 listed and rated 1,100 Btu/ft² by the Florida Solar Energy Center</li><li>4 ft wide in 10 or 12 ft lengths; roof or ground-rack mounted</li></ul></div>
-</div>
-<h3 style="margin-top:36px">How it works</h3>
-<ol class="steps"><li>You set your desired temperature on the automatic control panel.</li><li>A solar sensor checks for enough solar energy and whether the pool is below your setpoint; it works on hazy or cloudy days too.</li><li>A valve sends pool water up to the collectors, pushed by your existing pool pump.</li><li>The sun heats the water as it flows through the collector tubes, then it returns to the pool, repeating until your target temperature is reached.</li></ol>
-</div>
+</div></div>
 
-<div class="svc" id="hot-water"><div class="split">
- <div><span class="eyebrow">Solar Hot Water</span><h2>Most of your home's hot water, from the sun</h2>
+<div class="svc" id="hot-water">""" + banner("pool-08.jpg","Solar Hot Water","Most of your home's hot water, from the sun","Solar hot water collectors on a tile roof in Corona del Mar","center 35%") + """<div class="split">
+ <div>
  <p>Heating water is one of the oldest uses of solar energy, and millions of homes and businesses do it today.  A single conventional water heater can generate one to two tons of carbon dioxide per year; solar displaces that, along with sulfur dioxide, carbon monoxide and nitrous oxides.</p>
- <p>Roof collectors absorb the sun's heat, a pump circulates water to a storage tank in your garage or utility room, and a differential temperature controller captures the maximum available energy.  Every system is custom designed.</p>
- <div class="note"><b>Typical two-panel system: $5,500 to $7,000</b>, including two collectors, a solar storage tank, insulation, pump and automatic control.  Payback depends on your water use and utility rates.</div></div>
- <img src="assets/img/hot-water.jpg" alt="Solar hot water collectors" loading="lazy">
+ <p>Roof collectors absorb the sun's heat, a pump circulates water to a storage tank in your garage or utility room, and a differential temperature controller captures the maximum available energy.  Every system is custom designed.</p></div>
+ <div class="card"><h3>Typical two-panel system: $5,500 to $7,000</h3>
+ <ul class="checks"><li>Two solar collectors</li><li>Solar storage tank</li><li>Insulation</li><li>Circulating pump</li><li>Automatic differential control</li></ul>
+ <p style="margin-top:.6em">Payback depends on your water use and utility rates.</p></div>
 </div></div>
 
 <div class="svc" id="batteries"><div class="split">
@@ -390,44 +408,63 @@ dhw = [
  ("How do solar water heaters work?","A heat-transfer fluid flows through the collectors, heats up, and transfers that heat to your household water in a storage tank.  Solar can be your only hot water source or pair with a conventional backup for heavy demand.  Systems are sized by bedrooms, occupants and household needs."),
 ]
 
-learn = hero("Solar Education","Straight answers about solar electricity, pool heating, hot water, net metering and your rights as a homeowner.","pool-3.jpg") + """
-<nav class="subnav"><div class="wrap"><a href="#ca-rules">California Solar Rules</a><a href="#electric">Solar Electric FAQ</a><a href="#pool">Pool Heating FAQ</a><a href="#operation">Pool System Operation</a><a href="#hot-water">Hot Water FAQ</a><a href="#net-metering">Net Metering</a><a href="#solar-rights">Solar Rights Act</a></div></nav>
-<section id="ca-rules"><div class="wrap"><span class="eyebrow">What changed</span><h2>California solar rules, 2026</h2><p class="lede">The laws, rate changes and code updates that affect buying solar in California right now, in plain English.  Click any column heading to sort.</p><p class="reviewed">Last reviewed: November 8, 2026</p>""" + rules_table() + """<div class="note">This is a summary, not legal or tax advice.  Call us at (714) 968-8845 and we will explain how each rule applies to your home.</div></div></section>
-<section class="alt" id="electric"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar electric</h2>""" + faq(electric) + """</div></section>
-<section id="pool"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar pool heating</h2>""" + faq(pool) + """</div></section>
-<section class="alt" id="operation"><div class="wrap"><span class="eyebrow">Owner's guide</span><h2>Solar pool system operation</h2>
+TOPICS = [
+ # (id, icon, title, subtitle, dialog title, html)
+ ("ca-rules","doc","CA Solar Rules","What changed in 2026","California solar rules, 2026",
+  '<p class="lede">The laws, rate changes and code updates that affect buying solar in California right now, in plain English.  Click any column heading to sort.</p><p class="reviewed">Last reviewed: November 8, 2026</p>' + rules_table() +
+  '<div class="note">This is a summary, not legal or tax advice.  Call us at (714) 968-8845 and we will explain how each rule applies to your home.</div>'),
+ ("electric","sun","Solar Electric","How PV works","Solar electric FAQ", faq(electric)),
+ ("pool","pool","Pool Heating","Common questions","Solar pool heating FAQ", faq(pool)),
+ ("operation","wrench","Pool Operation","Owner's guide","Solar pool system operation", """
  <div class="note"><b>Before you start:</b> drain the system for winter before November 15 and keep it off until March 1.  Many systems drain automatically, so check with us if you're not sure.</div>
- <div class="grid g2" style="margin-top:28px">
+ <div class="grid g2" style="margin-top:24px">
   <div class="card"><h3>Normal startup</h3><ol class="steps"><li>Confirm the pool pump is running and the power indicator is lit.</li><li>Set the solar controller's function switch to Automatic.</li><li>Set your temperature between 60°F and 104°F.</li><li>When water enters the collectors, filter pressure rises about 4–7 psi and air purges for roughly 3 minutes (you'll see bubbles).</li></ol></div>
   <div class="card"><h3>Backwashing the filter</h3><ol class="steps"><li>Turn off the controller and wait for the solar valve to move fully to Bypass.</li><li>Turn the red-handle ball valve to Off (perpendicular to the pipe).</li><li>Backwash as usual and add diatomaceous earth.</li><li>Wait about 30 minutes, reopen the red-handle valve, and return the controller to Automatic.</li></ol></div>
   <div class="card"><h3>Winter freeze protection</h3><ol class="steps"><li>Set the solar controller to Off.</li><li>Turn off the main pump and wait at least one hour for drainage.</li><li>Close the red-handle ball valve to isolate the collectors.</li><li>Open the 1/2-inch ball valve and leave it open until spring startup.</li></ol></div>
   <div class="card"><h3>Troubleshooting &amp; tips</h3><ul><li><b>No "flow through collector" light:</b> confirm Automatic, then try the manual flow setting; if still off, call us.</li><li><b>No bubbles at startup:</b> check the pump, controller mode, connections and temperature setting.</li><li><b>Bubbles that won't stop:</b> clean or backwash the filter and empty the pump basket.</li><li>Run the pump roughly 11 AM to 5 PM, pull from the main drain, and aim return jets downward.</li></ul></div>
- </div>
-</div></section>
-<section id="hot-water"><div class="wrap"><span class="eyebrow">FAQ</span><h2>Solar hot water</h2>""" + faq(dhw) + """</div></section>
-<section class="alt" id="net-metering"><div class="wrap"><span class="eyebrow">Your utility bill</span><h2>Net metering &amp; the Solar Billing Plan</h2>
+ </div>"""),
+ ("hot-water","drop","Solar Hot Water","Common questions","Solar hot water FAQ", faq(dhw)),
+ ("net-metering","chart","Net Metering","Your utility bill","Net metering &amp; the Solar Billing Plan", """
  <p class="lede">Which program you're on depends on when your system was interconnected.  Click any column heading to sort.</p>
- <table class="data" style="margin-top:24px"><thead><tr><th>Program</th><th>Utility</th><th>Systems installed</th><th>Bill guide</th></tr></thead><tbody>
+ <div class="table-scroll"><table class="data"><thead><tr><th>Program</th><th>Utility</th><th>Systems installed</th><th>Bill guide</th></tr></thead><tbody>
   <tr><td>NEM 1.0</td><td>SCE</td><td>Before June 30, 2017</td><td><a href="https://www.sce.com/sites/default/files/inline-files/NEM%2B1.0%2BUYB%2B0617%2Br3.pdf" rel="noopener">Understanding your NEM 1.0 bill (PDF)</a></td></tr>
   <tr><td>NEM 2.0</td><td>SCE</td><td>July 1, 2017 to April 13, 2023</td><td><a href="https://www.sce.com/sites/default/files/inline-files/Understanding_Your_NEM_2_Billing_Statement%2B%281%29.pdf" rel="noopener">Understanding your NEM 2.0 bill (PDF)</a></td></tr>
   <tr><td>Solar Billing Plan</td><td>SCE</td><td>After April 14, 2023</td><td><a href="https://www.sce.com/residential/generating-your-own-power/solar-billing-plan" rel="noopener">SCE Solar Billing Plan</a></td></tr>
   <tr><td>Net Metering</td><td>SDG&amp;E</td><td>See statement guide</td><td><a href="assets/img/doc-sdge-net-metering.pdf">Understanding your SDG&amp;E bill (PDF)</a></td></tr>
- </tbody></table>
-</div></section>
-<section id="solar-rights"><div class="wrap split">
- <div><span class="eyebrow">Know your rights</span><h2>California Solar Rights Act</h2>
+ </tbody></table></div>"""),
+ ("solar-rights","badge","Solar Rights Act","Know your rights","California Solar Rights Act", """
+ <div class="split"><div>
  <p>California law limits restrictions that HOAs and others can place on solar energy systems, and makes it illegal for an HOA to prohibit a solar installation.</p>
  <p><a class="btn btn-navy" href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&amp;sectionNum=714" rel="noopener">Read Civil Code Section 714</a></p></div>
- <img src="assets/img/pv-05.jpg" alt="Solar electric system in Rossmoor" loading="lazy">
+ <img src="assets/img/pv-05.jpg" alt="Solar electric system in Rossmoor" loading="lazy"></div>"""),
+]
+
+def edu_tile(tid, icon, title, sub):
+    return (f'<button class="spanel" type="button" data-open="{tid}" aria-haspopup="dialog">'
+            f'<span class="sun-pop" aria-hidden="true"></span>'
+            f'<span class="cells"><span class="glint" aria-hidden="true"></span>'
+            f'<span class="pico">{ICON[icon]}</span><span class="pt">{title}</span><span class="ps">{sub}</span>'
+            f'<span class="meter" aria-hidden="true"><i></i></span><span class="tap">Tap to power up</span></span>'
+            f'<span class="legs" aria-hidden="true"></span></button>')
+
+def edu_dialog(tid, icon, dtitle, body):
+    return (f'<dialog class="edu" id="{tid}" aria-labelledby="{tid}-h"><div class="edu-head"><span class="pico">{ICON[icon]}</span>'
+            f'<h2 id="{tid}-h">{dtitle}</h2><button class="edu-x" type="button" aria-label="Close">&times;</button></div>'
+            f'<div class="edu-body">{body}</div></dialog>')
+
+learn = hero("Solar Education","Straight answers about solar electricity, pool heating, hot water, net metering and your rights as a homeowner.","pool-3.jpg") + """
+<section><div class="wrap">
+ <div class="head center"><span class="eyebrow">Pick a panel</span><h2>What would you like to know?</h2>
+ <p class="lede">Tap any solar panel to power it up and the answers open right here on the page.</p></div>
+ <div class="spanels">""" + "".join(edu_tile(t,i,ti,su) for t,i,ti,su,_,_ in TOPICS) + """</div>
 </div></section>
-"""
+""" + "".join(edu_dialog(t,i,dt,b) for t,i,_,_,dt,b in TOPICS) + "\n"
 page("learn.html","Solar Education & FAQs | Vasco Solar","FAQs on solar electricity, solar pool heating and hot water, pool system operation, net metering and the California Solar Rights Act.", learn)
 
 # ---------------------------------------------------------------- ABOUT
 partners = [
  ("Inverters","logo-enphase.png","Enphase","Microinverter systems built on high-tech innovation for residential and commercial solar."),
  ("Inverters","logo-solaredge.jpg","SolarEdge","Inverters that pair digital control with efficient power conversion."),
- ("Inverters","logo-sma.png","SMA","PV inverter and energy-management specialist for more than 35 years."),
  ("Battery Storage","cert-franklinwh.png","FranklinWH","Home energy management focused on safety, reliability and independence."),
  ("Battery Storage","logo-se-battery.png","SolarEdge Home Battery","DC-coupled storage with backup power through the Backup Interface."),
  ("Mounting","logo-quickmount.png","Quick Mount PV","Pioneered best roofing practices in rooftop solar mounting."),
@@ -445,7 +482,7 @@ about = hero("About Vasco Solar","A full-service Orange County solar company ser
  <div><span class="eyebrow">Who we are</span><h2>Renewable energy, done right since the beginning</h2>
  <p>Vasco Solar is a full-service solar company serving homeowners and businesses throughout Southern California, primarily Orange County, with a focus on saving energy and reducing utility costs.</p>
  <p>We design every type of solar application: solar electricity, solar pool heating, solar hot water and battery storage, each optimally designed for your unique situation.  Innovative technology, top-of-the-line equipment, skilled technicians and our commitment to customers have kept us going strong, and word of mouth remains our main source of new business.</p>
- <ul class="checks"><li>Technical expert for the California Contractors State License Board</li><li>Aquatherm Industries Gold Medal Installer</li><li>Solar Power World Top Solar Contractor, 2016–2020, 2024 and 2026</li><li>Proud member of CALSSA, the California Solar &amp; Storage Association</li><li>Licensed California contractor, {LIC}</li></ul></div>
+ <ul class="checks"><li>Technical expert for the California Contractors State License Board</li><li>Aquatherm Industries Gold Medal Installer</li><li>Solar Power World Top Solar Contractor</li><li>Proud member of CALSSA, the California Solar &amp; Storage Association</li><li>Licensed California contractor, {LIC}</li></ul></div>
  <img src="assets/img/pool-aquatherm.jpg" alt="Rick Vasquez of Vasco Solar with Aquatherm CEO Dave Sizelove at the Aquatherm plant, 2014" loading="lazy">
 </div></section>
 
@@ -460,6 +497,7 @@ about = hero("About Vasco Solar","A full-service Orange County solar company ser
 
 <section class="alt" id="reviews"><div class="wrap">
  <div class="head center"><span class="eyebrow">Reviews</span><h2>Our favorite reviews</h2></div>
+ {ratings_bar()}
  <div class="grid g3">{review_cards(REVIEWS)}</div>
 </div></section>
 """
